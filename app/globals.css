@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #050505;
+  --color-secondary: #121212;
+  --color-accent: #ffffff;
+  --color-muted: #a1a1aa;
+  --color-light: #f4f4f5;
+}
+
+/* Smooth scroll with premium feel */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  @apply bg-primary text-light antialiased;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.03) 0%, transparent 40%),
+    radial-gradient(circle at 100% 0%, rgba(255,255,255,0.02) 0%, transparent 30%);
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl;
+}
+
+.glass-nav {
+  @apply backdrop-blur-md bg-primary/70 border-b border-white/5;
+}
+
+/* Selection – Premium White */
+::selection {
+  @apply bg-white/20 text-white;
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-white;
+}
+
+/* Hide scrollbar for horizontal scroll areas */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
