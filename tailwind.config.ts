@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -9,11 +10,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#050505', // Deeper, richer black
-        secondary: '#121212', // Subtle dark gray for contrast
-        accent: '#ffffff', // Pure white for high contrast
-        muted: '#a1a1aa', // Zinc 400 - Premium metallic gray
-        light: '#f4f4f5', // Zinc 100
+        primary: 'var(--bg-primary)',
+        secondary: 'var(--bg-secondary)',
+        accent: 'var(--color-accent)',
+        muted: 'var(--text-secondary)',
+        light: 'var(--color-light)',
+        highlight: 'var(--color-highlight)',
+        background: 'var(--bg-primary)',
+        foreground: 'var(--text-primary)',
+        'border-color': 'var(--border-color)',
       },
       fontFamily: {
         sans: ['var(--font-poppins)', 'system-ui', 'sans-serif'],

@@ -64,13 +64,13 @@ export function ProcessSection() {
   return (
     <SectionWrapper id="process" layer={0} className="py-24 md:py-32 px-6" entranceY={48} entranceScale={0.98}>
       <section ref={sectionRef} className="max-w-5xl mx-auto">
-        <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-light text-center mb-16">
+        <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-center mb-16">
           Our Growth Process
         </h2>
         <div className="relative">
           <div
             ref={lineRef}
-            className="hidden md:block absolute top-8 left-0 right-0 h-px bg-light/20 origin-left"
+            className="hidden md:block absolute top-8 left-0 right-0 h-px bg-border-color origin-left"
           />
           <div className="grid md:grid-cols-5 gap-8 md:gap-4">
             {STEPS.map((step, i) => (
@@ -80,13 +80,13 @@ export function ProcessSection() {
                 whileHover={{ scale: 1.02 }}
                 className="relative flex flex-col items-center text-center"
               >
-                <span className="w-16 h-16 rounded-full bg-light/10 border border-light/30 flex items-center justify-center text-light font-display font-bold text-lg z-10">
+                <span className="w-16 h-16 rounded-full bg-secondary/50 border border-border-color flex items-center justify-center text-foreground font-display font-bold text-lg z-10">
                   {i + 1}
                 </span>
-                <h3 className="mt-4 font-display font-semibold text-light text-lg">{step.label}</h3>
+                <h3 className="mt-4 font-display font-semibold text-foreground text-lg">{step.label}</h3>
                 <p className="mt-1 text-sm text-muted max-w-[140px]">{step.desc}</p>
                 {i < STEPS.length - 1 && (
-                  <span className="hidden md:inline absolute top-8 left-[calc(50%+2rem)] text-light/30">
+                  <span className="hidden md:inline absolute top-8 left-[calc(50%+2rem)] text-muted">
                     <IconArrowRight />
                   </span>
                 )}

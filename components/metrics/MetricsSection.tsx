@@ -74,7 +74,7 @@ function RolldownCounter({
       className="flex flex-col items-center text-center"
     >
       <div className="overflow-hidden h-14 md:h-16 flex items-center justify-center" aria-hidden>
-        <span className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-light tabular-nums transition-transform duration-300 ease-out">
+        <span className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tabular-nums transition-transform duration-300 ease-out">
           {displayValue}
           {suffix}
         </span>
@@ -141,18 +141,18 @@ export function MetricsSection() {
     <SectionWrapper
       id="metrics-section"
       layer={0}
-      className="py-20 md:py-28 px-6 border-y border-light/10 bg-secondary/40"
+      className="py-20 md:py-28 px-6 border-y border-border-color bg-secondary/20"
       entranceY={40}
       entranceScale={0.99}
     >
       <section ref={sectionRef} className="max-w-5xl mx-auto">
         <h2
           ref={titleRef}
-          className="font-display text-2xl md:text-3xl font-bold text-light text-center mb-14"
+          className="font-display text-2xl md:text-3xl font-bold text-foreground text-center mb-14"
         >
           By the numbers
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12">
           {METRICS.map((metric, i) => (
             <RolldownCounter
               key={metric.label}

@@ -42,6 +42,7 @@ export default function RootLayout({
     >
       <body className="font-sans min-h-screen">
         <GSAPProvider>
+          <div className="noise-overlay" />
           <CustomCursor />
           {children}
         </GSAPProvider>

@@ -55,7 +55,7 @@ export function TrustStrip() {
   }, []);
 
   return (
-    <SectionWrapper layer={0} className="py-16 px-6 border-y border-light/10 bg-secondary/50" entranceY={32} entranceScale={0.99}>
+    <SectionWrapper layer={0} className="py-16 px-6 border-y border-border-color bg-secondary/50" entranceY={32} entranceScale={0.99}>
       <section ref={sectionRef} className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
         {ITEMS.map((item, i) => (
           <div

@@ -3,11 +3,32 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #050505;
-  --color-secondary: #121212;
-  --color-accent: #ffffff;
-  --color-muted: #a1a1aa;
-  --color-light: #f4f4f5;
+  /* Core Colors - Light Mode Defaults */
+  --color-primary: #0a0a0b;
+  --color-secondary: #ffffff;
+  --color-accent: #000000;
+  --color-muted: #64748b;
+  --color-light: #f8fafc;
+  --color-highlight: #0ea5e9;
+
+  /* Functional Theme Tokens */
+  --bg-primary: var(--color-light);
+  --bg-secondary: var(--color-secondary);
+  --text-primary: var(--color-primary);
+  --text-secondary: var(--color-muted);
+  --border-color: rgba(0, 0, 0, 0.08);
+  --nav-bg: rgba(248, 250, 252, 0.8);
+}
+
+/* Dark mode overrides */
+html.dark {
+  --bg-primary: var(--color-primary);
+  --bg-secondary: #121214;
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --nav-bg: rgba(10, 10, 11, 0.8);
+  --color-highlight: #38bdf8;
 }
 
 /* Smooth scroll with premium feel */
@@ -18,6 +39,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -28,29 +50,99 @@
 }
 
 body {
-  @apply bg-primary text-light antialiased;
-  background-image: 
-    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.03) 0%, transparent 40%),
-    radial-gradient(circle at 100% 0%, rgba(255,255,255,0.02) 0%, transparent 30%);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 100% 0%, rgba(14, 165, 233, 0.02) 0%, transparent 30%);
 }
 
 /* Glassmorphism Utilities */
 .glass-panel {
-  @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl;
+  @apply backdrop-blur-xl border shadow-2xl;
+  background-color: var(--border-color);
+  border-color: var(--border-color);
 }
 
 .glass-nav {
-  @apply backdrop-blur-md bg-primary/70 border-b border-white/5;
+  @apply backdrop-blur-md border-b;
+  background-color: var(--nav-bg);
+  border-color: var(--border-color);
 }
 
-/* Selection – Premium White */
+/* Animated Gradient Text Utility */
+.text-animate-gradient {
+  background: linear-gradient(to right,
+      #38bdf8 20%,
+      /* Sky 400 */
+      #3b82f6 40%,
+      /* Blue 500 */
+      #6366f1 60%,
+      /* Indigo 500 */
+      #3b82f6 80%,
+      /* Blue 500 */
+      #38bdf8 100%
+      /* Sky 400 */
+    );
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shine 4s linear infinite;
+  display: inline-block;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Noise Texture Overlay */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Spotlight Glow Utility */
+.spotlight-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),
+      rgba(14, 165, 233, 0.08),
+      transparent 40%);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.spotlight-glow:hover::before {
+  opacity: 1;
+}
+
+/* Selection */
 ::selection {
-  @apply bg-white/20 text-white;
+  background-color: rgba(14, 165, 233, 0.15);
+  color: var(--text-primary);
 }
 
 /* Focus visible for accessibility */
 :focus-visible {
-  @apply outline-2 outline-offset-2 outline-white;
+  @apply outline-2 outline-offset-2;
+  outline-color: var(--color-highlight);
 }
 
 /* Hide scrollbar for horizontal scroll areas */
@@ -58,6 +150,7 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }

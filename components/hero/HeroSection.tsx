@@ -22,8 +22,8 @@ export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const headlineWrapRef = useRef<HTMLHeadingElement>(null);
   const subheadRef = useRef<HTMLParagraphElement>(null);
-  const cycleRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
+  const badgeRef = useRef<HTMLDivElement>(null);
   const scrollProgress = useRef(0);
   const killScrollProgress = useRef<(() => void) | null>(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -70,14 +70,14 @@ export function HeroSection() {
         { opacity: 1, y: 0, duration: 0.9, delay: 0.6, ease: EASE_EDITORIAL }
       );
       gsap.fromTo(
-        cycleRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.5, delay: 0.85 }
-      );
-      gsap.fromTo(
         ctaRef.current,
         { opacity: 0, y: 24 },
-        { opacity: 1, y: 0, duration: 0.7, delay: 1, ease: EASE_EDITORIAL }
+        { opacity: 1, y: 0, duration: 0.7, delay: 0.8, ease: EASE_EDITORIAL }
+      );
+      gsap.fromTo(
+        badgeRef.current,
+        { scale: 0, rotate: -45 },
+        { scale: 1, rotate: 0, duration: 1, delay: 1.1, ease: 'back.out(1.7)' }
       );
     }, sectionRef);
 
@@ -90,46 +90,68 @@ export function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-24 pb-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-32 pb-24 md:pt-24 md:pb-20"
     >
       {/* Background Gradient */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-primary/30 to-secondary/80 pointer-events-none" aria-hidden />
-      {isMobile && <div className="absolute inset-0 z-0 bg-gradient-to-b from-primary/50 to-secondary/80" aria-hidden />}
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-primary/10 to-secondary/40 pointer-events-none dark:from-primary/30 dark:to-secondary/80" aria-hidden />
+      {isMobile && <div className="absolute inset-0 z-0 bg-gradient-to-b from-primary/20 to-secondary/40 dark:from-primary/50 dark:to-secondary/80" aria-hidden />}
 
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
+      <div className="relative z-10 max-w-5xl mx-auto text-center">
+        {/* Floating Engage Badge */}
+        <div
+          ref={badgeRef}
+          className="absolute -top-12 -right-4 md:-right-12 w-20 h-20 md:w-32 md:h-32 block"
+        >
+          <div className="relative w-full h-full animate-[spin_15s_linear_infinite]">
+            <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
+              <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+              <text className="font-display text-[8px] font-bold uppercase tracking-[0.2em] fill-foreground transition-colors duration-500" opacity="0.4">
+                <textPath xlinkHref="#circlePath">
+                  Social Route • Digital Growth • Engage • storytelling •
+                </textPath>
+              </text>
+            </svg>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="font-display text-[10px] md:text-xs font-black text-highlight tracking-widest uppercase mb-1">Engage</span>
+            </div>
+          </div>
+        </div>
+
         <h1
           ref={headlineWrapRef}
-          className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-light"
+          className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-foreground leading-[0.9]"
         >
           {HEADLINE_WORDS.map((word, i) => (
-            <span key={i} className="hero-word inline-block mr-[0.25em]">
+            <span
+              key={i}
+              className={`hero-word inline-block mr-[0.25em] ${(word === 'Digital' || word === 'Growth' || word === 'Route') ? 'text-animate-gradient' : ''
+                }`}
+            >
               {word}
             </span>
           ))}
         </h1>
         <p
           ref={subheadRef}
-          className="mt-6 text-lg sm:text-xl text-muted max-w-2xl mx-auto leading-relaxed"
+          className="mt-8 text-lg sm:text-xl md:text-2xl text-muted max-w-3xl mx-auto leading-relaxed font-medium"
         >
-          We help brands grow online through powerful storytelling, creative content, and
-          result-driven digital marketing strategies.
+          We build meaningful connections through storytelling, creative content, and
+          result-driven digital growth roadmaps.
         </p>
-        <div ref={cycleRef} className="mt-6 font-display text-xl sm:text-2xl font-semibold text-light">
-          <CyclingText />
-        </div>
+
         <div
           ref={ctaRef}
-          className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center"
         >
           <MagneticButton strength={0.25}>
             <Link
               href="#contact"
-              className="inline-block px-8 py-4 bg-light text-primary font-semibold rounded-sm hover:bg-white transition-colors"
+              className="inline-block px-10 py-5 bg-foreground text-background font-bold rounded-sm hover:scale-[1.02] transition-transform shadow-xl"
             >
-              Get a Free Strategy Call
+              Start Your Growth Roadmap
             </Link>
           </MagneticButton>
-          <LinkWithUnderline href="#services" className="text-light font-medium border-light/40">
+          <LinkWithUnderline href="#work" className="text-foreground font-bold text-lg border-foreground/40">
             View Our Work
           </LinkWithUnderline>
         </div>

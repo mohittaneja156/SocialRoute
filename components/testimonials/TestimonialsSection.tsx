@@ -73,7 +73,7 @@ export function TestimonialsSection() {
   return (
     <SectionWrapper id="testimonials" layer={0} className="py-24 md:py-32 px-6 overflow-hidden" entranceY={48} entranceScale={0.98}>
       <section ref={sectionRef} className="max-w-3xl mx-auto text-center">
-        <h2 ref={titleRef} className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-light mb-12">
+        <h2 ref={titleRef} className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-12">
           What Clients Say
         </h2>
         <div className="relative min-h-[220px] flex items-center justify-center">
@@ -90,7 +90,7 @@ export function TestimonialsSection() {
                 &ldquo;{TESTIMONIALS[index].quote}&rdquo;
               </blockquote>
               <footer className="mt-6">
-                <cite className="not-italic font-semibold text-light">
+                <cite className="not-italic font-semibold text-foreground">
                   {TESTIMONIALS[index].author}
                 </cite>
                 <span className="text-muted text-sm block mt-1">{TESTIMONIALS[index].role}</span>
@@ -105,7 +105,7 @@ export function TestimonialsSection() {
               type="button"
               aria-label={`Go to testimonial ${i + 1}`}
               onClick={() => setIndex(i)}
-              className={`w-2.5 h-2.5 rounded-full transition-colors ${i === index ? 'bg-light' : 'bg-light/30 hover:bg-light/50'
+              className={`w-2.5 h-2.5 rounded-full transition-colors ${i === index ? 'bg-highlight' : 'bg-muted/30 hover:bg-muted/50'
                 }`}
             />
           ))}

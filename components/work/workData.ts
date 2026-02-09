@@ -3,7 +3,7 @@
  * Replace image URLs with your real project screenshots/case studies.
  */
 
-export type ProjectCategory = 'Branding' | 'Web Development' | 'Social Media' | 'Content' | 'SEO' | 'E-commerce';
+export type ProjectCategory = 'Branding' | 'Web Development' | 'Social Media Marketing' | 'Content Creation' | 'Search Engine Optimization' | 'Digital Marketing Strategy';
 
 export type Project = {
   id: string;
@@ -36,7 +36,7 @@ export const PROJECTS: Project[] = [
   {
     id: '3',
     title: 'Social Campaign & Community Growth',
-    category: 'Social Media',
+    category: 'Social Media Marketing',
     image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80',
     imageAlt: 'Social media campaign and community growth',
     link: '#work',
@@ -44,7 +44,7 @@ export const PROJECTS: Project[] = [
   {
     id: '4',
     title: 'Content Strategy & Video Production',
-    category: 'Content',
+    category: 'Content Creation',
     image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&q=80',
     imageAlt: 'Content strategy and video production',
     link: '#work',
@@ -52,7 +52,7 @@ export const PROJECTS: Project[] = [
   {
     id: '5',
     title: 'Organic Growth & SEO Overhaul',
-    category: 'SEO',
+    category: 'Search Engine Optimization',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
     imageAlt: 'SEO and organic growth analytics',
     link: '#work',

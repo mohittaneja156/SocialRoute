@@ -49,14 +49,14 @@ export function ClientsSection() {
     <SectionWrapper
       id="clients"
       layer={0}
-      className="py-20 md:py-28 px-6 bg-secondary/30 overflow-hidden"
+      className="py-20 md:py-28 px-6 bg-secondary/10 border-t border-border-color overflow-hidden"
       entranceY={40}
       entranceScale={0.99}
     >
       <section ref={sectionRef} className="max-w-6xl mx-auto">
         <h2
           ref={titleRef}
-          className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-light text-center mb-4"
+          className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground text-center mb-4"
         >
           Trusted by brands
         </h2>
@@ -74,7 +74,7 @@ export function ClientsSection() {
             {duplicated.map((client) => (
               <div
                 key={`${client.id}-${client.name}`}
-                className="flex-shrink-0 flex items-center justify-center w-[140px] md:w-[160px] h-[72px] md:h-[80px] rounded-lg border border-light/10 bg-primary/60 px-4 snap-center"
+                className="flex-shrink-0 flex items-center justify-center w-[140px] md:w-[160px] h-[72px] md:h-[80px] rounded-lg border border-border-color bg-secondary/60 px-4 snap-center"
               >
                 {client.logo ? (
                   // eslint-disable-next-line @next/next/no-img-element
@@ -84,7 +84,7 @@ export function ClientsSection() {
                     className="max-h-10 md:max-h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
                   />
                 ) : (
-                  <span className="font-display font-semibold text-light/80 text-sm md:text-base text-center truncate max-w-full">
+                  <span className="font-display font-semibold text-foreground/80 text-sm md:text-base text-center truncate max-w-full">
                     {client.name}
                   </span>
                 )}

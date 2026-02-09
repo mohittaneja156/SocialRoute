@@ -35,8 +35,8 @@ export function MagneticButton({ children, strength = 0.2, className = '' }: Mag
       className={`inline-block ${className}`}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      animate={{ x: position.x, y: position.y }}
-      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+      animate={{ x: position.x * 1.5, y: position.y * 1.5 }}
+      transition={{ type: 'spring', stiffness: 150, damping: 40 }}
     >
       {children}
     </motion.div>

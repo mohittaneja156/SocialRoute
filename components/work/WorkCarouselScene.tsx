@@ -10,16 +10,11 @@ import { useRef, useMemo, useEffect, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
+import { PROJECTS } from './workData';
+
 type ScrollRef = React.MutableRefObject<number>;
 
-const PROJECT_IMAGES = [
-  'https://placehold.co/800x500/1a1a1a/fafafa?text=Project+1',
-  'https://placehold.co/800x500/252525/fafafa?text=Project+2',
-  'https://placehold.co/800x500/1a1a1a/fafafa?text=Project+3',
-  'https://placehold.co/800x500/252525/fafafa?text=Project+4',
-  'https://placehold.co/800x500/1a1a1a/fafafa?text=Project+5',
-  'https://placehold.co/800x500/252525/fafafa?text=Project+6',
-];
+const PROJECT_IMAGES = PROJECTS.map(p => p.image);
 
 const CARD_WIDTH = 2.2;
 const CARD_GAP = 0.4;

@@ -65,7 +65,7 @@ export function ImmersiveBackground() {
                     x: '-50%', // Center on the coordinate
                     y: '-50%'
                 }}
-                className="absolute w-[80vw] h-[80vw] md:w-[50vw] md:h-[50vw] rounded-full mix-blend-screen blur-[80px] md:blur-[120px]"
+                className="absolute w-[80vw] h-[80vw] md:w-[50vw] md:h-[50vw] rounded-full mix-blend-soft-light dark:mix-blend-plus-lighter blur-[80px] md:blur-[120px] opacity-40 dark:opacity-100"
             />
 
             {/* Secondary Shape (Counter-flow) */}
@@ -77,7 +77,7 @@ export function ImmersiveBackground() {
                     x: '-50%',
                     y: '-50%'
                 }}
-                className="absolute w-[60vw] h-[60vw] md:w-[40vw] md:h-[40vw] rounded-full mix-blend-screen blur-[60px] md:blur-[100px] opacity-70"
+                className="absolute w-[60vw] h-[60vw] md:w-[40vw] md:h-[40vw] rounded-full mix-blend-soft-light dark:mix-blend-plus-lighter blur-[60px] md:blur-[100px] opacity-20 dark:opacity-70"
             />
 
             {/* Noise Texture (CSS-only, no image file needed) */}

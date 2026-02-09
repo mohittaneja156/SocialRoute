@@ -18,11 +18,13 @@ import { Footer } from '@/components/footer/Footer';
  * Sections: Hero → Trust → Metrics → About → Services → Our Work → Process → Why Us → Testimonials → CTA → Contact → Footer.
  */
 import { FluidFlowOverlay } from '@/components/ui/FluidFlowOverlay';
+import { FloatingContact } from '@/components/ui/FloatingContact';
 
 export default function Home() {
   return (
     <>
       <FluidFlowOverlay />
+      <FloatingContact />
       <Header />
       <main className="relative">
         <HeroSection />

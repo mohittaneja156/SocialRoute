@@ -32,23 +32,23 @@ export function Footer() {
   }, []);
 
   return (
-    <footer className="pt-16 pb-8 px-6 border-t border-light/10 bg-secondary/40">
+    <footer className="pt-16 pb-8 px-6 border-t border-border-color bg-secondary/20">
       <div className="max-w-6xl mx-auto">
         {/* Map / Address Removed */}
 
         {/* Copyright + Legal */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-light/10">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-border-color">
           <p className="text-muted text-sm text-center md:text-left">
             © 2026 Social Route. All Rights Reserved.
           </p>
           <nav className="flex gap-6" aria-label="Footer links">
             <motion.span whileHover={{ opacity: 0.8 }}>
-              <Link href="/privacy" className="text-muted text-sm hover:text-light transition-colors">
+              <Link href="/privacy" className="text-muted text-sm hover:text-foreground transition-colors">
                 Privacy Policy
               </Link>
             </motion.span>
             <motion.span whileHover={{ opacity: 0.8 }}>
-              <Link href="/terms" className="text-muted text-sm hover:text-light transition-colors">
+              <Link href="/terms" className="text-muted text-sm hover:text-foreground transition-colors">
                 Terms & Conditions
               </Link>
             </motion.span>

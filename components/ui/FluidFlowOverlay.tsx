@@ -44,8 +44,8 @@ export function FluidFlowOverlay() {
     }, [mouseX, mouseY]);
 
     // --- COORDINATES (Vw/Vh) ---
-    const top = useTransform(smoothProgress, [0, 0.3, 0.55, 0.85, 1], ['15%', '40%', '60%', '90%', '95%']);
-    const left = useTransform(smoothProgress, [0, 0.3, 0.55, 0.85, 1], ['50%', '85%', '10%', '50%', '50%']);
+    const top = useTransform(smoothProgress, [0, 0.25, 0.5, 0.75, 1], ['15%', '35%', '55%', '75%', '92%']);
+    const left = useTransform(smoothProgress, [0, 0.25, 0.5, 0.75, 1], ['50%', '85%', '15%', '80%', '50%']);
 
     // --- MORPHING ---
     const borderRadius = useTransform(smoothProgress, [0, 0.3, 0.6, 1], ['50%', '30%', '50%', '10%']);
@@ -53,14 +53,14 @@ export function FluidFlowOverlay() {
     const height = useTransform(smoothProgress, [0, 0.3, 0.55, 1], ['35vw', '18vw', '45vw', '8vw']);
     const rotate = useTransform(smoothProgress, [0, 1], [0, 240]);
 
-    // --- COLOR FLOW (Red -> Blue -> Violet) ---
+    // --- COLOR FLOW (Vivid & Saturated) ---
     const background = useTransform(smoothProgress,
         [0, 0.4, 0.7, 1],
         [
-            'radial-gradient(circle at 30% 30%, rgba(255, 60, 60, 0.4), rgba(255, 60, 60, 0) 65%)', // Vivid Red
-            'radial-gradient(circle at 70% 70%, rgba(60, 130, 255, 0.4), rgba(60, 130, 255, 0) 65%)', // Bright Blue
-            'radial-gradient(circle at 50% 50%, rgba(160, 100, 255, 0.5), rgba(160, 100, 255, 0) 65%)', // Violet
-            'radial-gradient(circle at 30% 30%, rgba(255, 60, 60, 0.4), rgba(255, 60, 60, 0) 65%)'  // Red Loop
+            'radial-gradient(circle at 30% 30%, rgba(255, 40, 40, 0.6), rgba(255, 40, 40, 0) 70%)', // Vivid Red
+            'radial-gradient(circle at 70% 70%, rgba(40, 110, 255, 0.6), rgba(40, 110, 255, 0) 70%)', // Bright Blue
+            'radial-gradient(circle at 50% 50%, rgba(180, 80, 255, 0.7), rgba(180, 80, 255, 0) 70%)', // Violet
+            'radial-gradient(circle at 30% 30%, rgba(255, 40, 40, 0.6), rgba(255, 40, 40, 0) 70%)'  // Red Loop
         ]
     );
 
@@ -84,7 +84,7 @@ export function FluidFlowOverlay() {
                     x: useTransform(smoothMouseX, (val) => `calc(-50% + ${val * -1}px)`),
                     y: useTransform(smoothMouseY, (val) => `calc(-50% + ${val * -1}px)`),
                 }}
-                className="absolute mix-blend-plus-lighter opacity-80"
+                className="absolute mix-blend-multiply dark:mix-blend-plus-lighter opacity-50 dark:opacity-90 transition-opacity duration-500"
             />
 
             {/* Secondary Detail/Highlight Layer for "Professional" Complexity */}

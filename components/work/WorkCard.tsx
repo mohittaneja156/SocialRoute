@@ -7,47 +7,62 @@ import type { Project } from './workData';
 type WorkCardProps = {
   project: Project;
   index: number;
-  cardRef?: (el: HTMLAnchorElement | null) => void;
+  className?: string;
 };
 
 /**
- * WorkCard: Interactive project card with image, hover overlay (title, category, CTA).
+ * WorkCard: Sophisticated Bento-style card.
+ * Compact, high-contrast, and interactive.
  */
-export function WorkCard({ project, index, cardRef }: WorkCardProps) {
+export function WorkCard({ project, index, className = '' }: WorkCardProps) {
   return (
-    <motion.a
-      ref={cardRef}
-      href={project.link ?? '#work'}
-      className="group relative flex-shrink-0 w-[320px] md:w-[380px] h-[220px] md:h-[260px] rounded-lg overflow-hidden border border-light/10 bg-secondary block"
-      initial={false}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: [0.21, 1.11, 0.81, 0.99], delay: index * 0.1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      className={`group relative overflow-hidden rounded-3xl border border-border-color bg-secondary shadow-xl cursor-none pointer-events-auto ${className}`}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={project.image}
-        alt={project.imageAlt}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-      />
-      {/* Gradient overlay – visible on hover, subtle at rest */}
-      <div
-        className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent opacity-70 group-hover:opacity-95 transition-opacity duration-300"
-        aria-hidden
-      />
-      {/* Content overlay */}
-      <div className="absolute inset-0 flex flex-col justify-end p-5 md:p-6 text-light">
-        <span className="text-xs md:text-sm font-medium text-light/80 uppercase tracking-wider mb-1">
-          {project.category}
-        </span>
-        <h3 className="font-display text-lg md:text-xl font-semibold mb-2 group-hover:underline underline-offset-2">
-          {project.title}
-        </h3>
-        <span className="inline-flex items-center gap-2 text-sm font-medium text-light/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          View project
-          <IconArrowRight />
+      {/* Imagery with subtle zoom */}
+      <div className="absolute inset-0 w-full h-full">
+        <img
+          src={project.image}
+          alt={project.imageAlt}
+          className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+      </div>
+
+      {/* Content Container */}
+      <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+        <div className="relative z-10">
+          <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-foreground/50 mb-2 px-2.5 py-1 border border-border-color rounded-full backdrop-blur-md bg-secondary/20">
+            {project.category}
+          </span>
+          <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground leading-tight group-hover:text-highlight transition-colors duration-300">
+            {project.title}
+          </h3>
+
+          {/* Subtle CTA reveal */}
+          <div className="mt-4 flex items-center gap-3 overflow-hidden">
+            <motion.div
+              className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-foreground/80"
+              initial={{ x: -20, opacity: 0 }}
+              whileHover={{ x: 0, opacity: 1 }}
+            >
+              <span>Explore</span>
+              <IconArrowRight className="w-4 h-4" />
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* Decorative Index */}
+      <div className="absolute top-4 right-6 opacity-10 select-none">
+        <span className="font-display text-4xl font-bold italic text-foreground pointer-events-none">
+          {index + 1}
         </span>
       </div>
-    </motion.a>
+    </motion.div>
   );
 }

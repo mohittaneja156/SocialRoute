@@ -62,9 +62,9 @@ export function ContactSection() {
   }, []);
 
   return (
-    <SectionWrapper id="contact" layer={0} className="py-24 md:py-32 px-6 border-t border-white/5" entranceY={48} entranceScale={0.98}>
+    <SectionWrapper id="contact" layer={0} className="py-24 md:py-32 px-6 border-t border-border-color" entranceY={48} entranceScale={0.98}>
       <section ref={sectionRef} className="max-w-6xl mx-auto">
-        <h2 ref={titleRef} className="font-display text-3xl md:text-5xl font-bold text-light text-center mb-16">
+        <h2 ref={titleRef} className="font-display text-3xl md:text-5xl font-bold text-foreground text-center mb-16">
           Get in Touch
         </h2>
 
@@ -73,23 +73,23 @@ export function ContactSection() {
           {/* Contact Info */}
           <div className="space-y-12">
             <div className="space-y-6">
-              <h3 className="text-xl font-semibold text-white">Contact Info</h3>
+              <h3 className="text-xl font-semibold text-foreground">Contact Info</h3>
               {LINKS.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
                   target={item.external ? '_blank' : undefined}
                   rel={item.external ? 'noopener noreferrer' : undefined}
-                  className="block group p-4 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-colors"
+                  className="block group p-4 rounded-xl border border-border-color bg-secondary/30 hover:bg-secondary/50 transition-colors"
                 >
                   <span className="text-muted text-sm block mb-1">{item.label}</span>
-                  <span className="text-light font-medium text-lg group-hover:text-white transition-colors">{item.value}</span>
+                  <span className="text-foreground font-medium text-lg group-hover:text-highlight transition-colors">{item.value}</span>
                 </a>
               ))}
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold text-white mb-4">Socials</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-4">Socials</h3>
               <div className="flex flex-wrap gap-4">
                 {SOCIAL.map((item) => (
                   <motion.a
@@ -99,7 +99,7 @@ export function ContactSection() {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-6 py-3 rounded-full border border-white/10 bg-white/5 text-light text-sm font-medium hover:bg-white hover:text-black transition-all"
+                    className="px-6 py-3 rounded-full border border-border-color bg-secondary text-foreground text-sm font-medium hover:bg-foreground hover:text-background transition-all"
                   >
                     {item.label}
                   </motion.a>
@@ -110,14 +110,14 @@ export function ContactSection() {
 
           {/* Map & Address Column */}
           <div className="space-y-8">
-            <div className="relative h-[400px] rounded-sm overflow-hidden border border-light/10 bg-secondary/30">
+            <div className="relative h-[300px] md:h-[400px] rounded-sm overflow-hidden border border-border-color bg-secondary/30">
               {/* Centered on India, Zoomed out */}
               <MapWithNoSSR coords={[22.5937, 78.9629]} zoom={4} />
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-primary/80 via-transparent to-transparent z-[400]" />
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-background/80 via-transparent to-transparent z-[400]" />
             </div>
 
             <div className="text-center md:text-left">
-              <h3 className="text-xl font-semibold text-white mb-2">Social Route HQ</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-2">Social Route HQ</h3>
               <p className="text-muted text-lg leading-relaxed">
                 Sector 4, Vaishali<br />
                 Ghaziabad, Uttar Pradesh 201010<br />

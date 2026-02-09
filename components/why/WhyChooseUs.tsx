@@ -59,7 +59,7 @@ export function WhyChooseUs() {
   return (
     <SectionWrapper id="why-us" layer={1} className="py-24 md:py-32 px-6 bg-secondary/20" entranceY={48} entranceScale={0.98}>
       <section ref={sectionRef} className="max-w-4xl mx-auto">
-        <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-light text-center mb-16">
+        <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-center mb-16">
           Why Choose Us
         </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -68,12 +68,12 @@ export function WhyChooseUs() {
               key={reason.title}
               ref={(el) => { itemsRef.current[i] = el; }}
               whileHover={{ y: -2 }}
-              className="flex items-start gap-4 p-5 rounded-sm border border-light/10 bg-primary/80"
+              className="flex items-start gap-4 p-5 rounded-sm border border-border-color bg-secondary/50"
             >
               <span className="shrink-0 mt-0.5" aria-hidden>
                 <reason.Icon />
               </span>
-              <span className="text-light font-medium">{reason.title}</span>
+              <span className="text-foreground font-medium">{reason.title}</span>
             </motion.div>
           ))}
         </div>

@@ -21,7 +21,7 @@ export function CyclingText() {
   }, []);
 
   return (
-    <span className="inline-block min-w-[140px] text-left text-light">
+    <span className="inline-block min-w-[140px] text-left text-foreground">
       <AnimatePresence mode="wait">
         <motion.span
           key={index}

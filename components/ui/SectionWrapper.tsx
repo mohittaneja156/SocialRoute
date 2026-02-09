@@ -67,7 +67,7 @@ export function SectionWrapper({
 
   const zIndex = 10 + layer;
   const translateZ = layer * 20;
-  const overlap = -48; /* px – sections overlap slightly */
+  const overlap = layer > 0 ? -32 : 0;
 
   return (
     <section

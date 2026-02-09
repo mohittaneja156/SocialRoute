@@ -47,22 +47,22 @@ export function CTASection() {
   }, []);
 
   return (
-    <SectionWrapper layer={1} className="py-24 md:py-32 px-6 bg-secondary/30" entranceY={48} entranceScale={0.98}>
+    <SectionWrapper layer={1} className="py-24 md:py-32 px-6 bg-secondary/20" entranceY={48} entranceScale={0.98}>
       <section ref={sectionRef} className="max-w-3xl mx-auto text-center">
         <div ref={contentRef}>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-light">
-            Ready to Grow Your Brand Digitally?
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
+            Ready for a Digital Growth Roadmap?
           </h2>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
             <MagneticButton strength={0.22}>
               <Link
                 href="#contact"
-                className="inline-block px-8 py-4 bg-light text-primary font-semibold rounded-sm hover:bg-white transition-colors"
+                className="inline-block px-8 py-4 bg-foreground text-background font-semibold rounded-sm hover:opacity-90 transition-opacity"
               >
-                Book a Free Consultation
+                Start Your Roadmap
               </Link>
             </MagneticButton>
-            <LinkWithUnderline href="mailto:info@socialroute.in?subject=Custom%20Quote" className="text-light font-medium">
+            <LinkWithUnderline href="mailto:info@socialroute.in?subject=Custom%20Quote" className="text-foreground font-medium">
               Get a Custom Quote
             </LinkWithUnderline>
           </div>
