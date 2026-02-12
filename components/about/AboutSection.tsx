@@ -97,11 +97,19 @@ export function AboutSection() {
         {/* Right Side: Content & Philosophy */}
         <div className="lg:col-span-7">
           <p ref={textRef} className="text-xl md:text-2xl lg:text-3xl text-foreground font-medium leading-tight">
-            Social Route is a full-service digital marketing agency dedicated to <span className="text-highlight font-bold relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-highlight">building meaningful connections</span> between brands and their audiences.
+            Social Route is a full-service digital marketing agency dedicated to <span className="text-highlight font-bold relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-highlight">building meaningful connections</span> between brands and their audiences through innovative storytelling and strategic digital solutions.
           </p>
 
           <p className="mt-8 text-muted text-lg leading-relaxed">
-            We produce high-quality, engaging content tailored to your target audience, using storytelling and data-driven insights to create content that educates, inspires, and influences customer decisions while maintaining consistency with your brand’s identity.
+            We believe in the power of authentic narratives. In today's digital landscape, brands need more than just visibility—they need to create genuine relationships with their audience. Our approach combines creative excellence with data-driven insights to craft campaigns that don't just reach people, but truly resonate with them.
+          </p>
+
+          <p className="mt-6 text-muted text-lg leading-relaxed">
+            From compelling content creation and strategic social media management to comprehensive digital marketing campaigns, we produce high-quality, engaging content tailored to your target audience. We use storytelling and analytics to create content that educates, inspires, and influences customer decisions while maintaining consistency with your brand's unique identity and voice.
+          </p>
+
+          <p className="mt-6 text-muted text-lg leading-relaxed">
+            Our team brings together creative minds, strategic thinkers, and technical experts who are passionate about helping brands grow. We don't just execute campaigns—we partner with you to understand your goals, challenges, and vision, then craft customized solutions that drive measurable results and sustainable growth.
           </p>
 
           <div className="mt-16">

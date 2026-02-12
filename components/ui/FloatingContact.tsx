@@ -92,7 +92,7 @@ export function FloatingContact() {
                                     <button
                                         disabled={status === 'submitting'}
                                         type="submit"
-                                        className="w-full py-4 bg-highlight text-white font-bold rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 mt-4 shadow-lg shadow-highlight/20"
+                                        className="w-full py-4 bg-gradient-premium text-white font-bold rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 mt-4 shadow-lg shadow-blue-500/30"
                                     >
                                         {status === 'submitting' ? 'Sending...' : 'Send Message'}
                                     </button>
@@ -109,52 +109,78 @@ export function FloatingContact() {
             <motion.button
                 onClick={() => setIsOpen(!isOpen)}
                 animate={{
-                    y: [0, -10, 0],
-                    rotate: isOpen ? 45 : 0
+                    y: [0, -8, 0],
                 }}
                 transition={{
-                    y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-                    rotate: { duration: 0.3 }
+                    y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
                 }}
-                whileHover={{ scale: 1.1, y: -15 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-14 h-14 md:w-20 md:h-20 flex items-center justify-center rounded-full border border-border-color dark:border-highlight/30 bg-secondary/60 dark:bg-secondary/40 backdrop-blur-xl shadow-2xl pointer-events-auto group relative overflow-hidden transition-colors"
+                whileHover={{ scale: 1.1, y: -12 }}
+                whileTap={{ scale: 0.95 }}
+                className="group pointer-events-auto relative w-16 h-16 md:w-20 md:h-20"
+                style={{ perspective: '1000px' }}
             >
-                <div className="relative z-10">
-                    <AnimatePresence mode="wait">
-                        {isOpen ? (
-                            <motion.span
-                                key="close"
-                                initial={{ opacity: 0, rotate: -45 }}
-                                animate={{ opacity: 1, rotate: 0 }}
-                                exit={{ opacity: 0, rotate: 45 }}
-                                className="text-3xl text-foreground font-light"
-                            >
-                                +
-                            </motion.span>
-                        ) : (
-                            <motion.div
-                                key="chat"
-                                initial={{ opacity: 0, scale: 0.5 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.5 }}
-                                className="relative"
-                            >
-                                <svg className="w-7 h-7 md:w-8 md:h-8 text-highlight" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 012 2v2a2 2 0 01-2 2h-5l-5 5v-5z" />
-                                </svg>
-                                {/* Active indicator */}
-                                <div className="absolute -top-1 -right-1 w-3 h-3 bg-highlight rounded-full border-2 border-secondary animate-pulse" />
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                {/* Main 3D Button */}
+                <div
+                    className="w-full h-full rounded-full bg-gradient-premium relative overflow-hidden transition-all duration-300"
+                    style={{
+                        transformStyle: 'preserve-3d',
+                        boxShadow: '0 10px 40px -10px rgba(59, 130, 246, 0.6), 0 0 0 1px rgba(255,255,255,0.1) inset'
+                    }}
+                >
+                    {/* Top highlight for 3D effect */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-transparent rounded-full"
+                        style={{ transform: 'translateZ(1px)' }} />
+
+                    {/* Bottom shadow for depth */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-full" />
+
+                    {/* Icon Container */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <AnimatePresence mode="wait">
+                            {isOpen ? (
+                                <motion.span
+                                    key="close"
+                                    initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
+                                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                                    exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
+                                    transition={{ duration: 0.3, ease: "backOut" }}
+                                    className="text-3xl md:text-4xl text-white font-light"
+                                >
+                                    ×
+                                </motion.span>
+                            ) : (
+                                <motion.div
+                                    key="message"
+                                    initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
+                                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                                    exit={{ opacity: 0, scale: 0.5, rotate: 45 }}
+                                    transition={{ duration: 0.3, ease: "backOut" }}
+                                >
+                                    <svg className="w-7 h-7 md:w-9 md:h-9 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                    </svg>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
+
+                    {/* Pulse ring on hover */}
+                    <motion.div
+                        className="absolute inset-0 rounded-full border-2 border-white/50"
+                        initial={{ scale: 1, opacity: 0 }}
+                        whileHover={{ scale: 1.3, opacity: 0 }}
+                        transition={{ duration: 0.6, repeat: Infinity }}
+                    />
                 </div>
 
-                {/* Glassy reflection */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-
-                {/* 3D-ish highlight */}
-                <div className="absolute top-0 inset-x-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
+                {/* Active indicator dot */}
+                {!isOpen && (
+                    <motion.div
+                        className="absolute -top-1 -right-1 w-4 h-4 bg-white rounded-full border-2 border-blue-600"
+                        animate={{ scale: [1, 1.2, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                    />
+                )}
             </motion.button>
         </div>
     );

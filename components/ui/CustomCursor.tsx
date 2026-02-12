@@ -22,10 +22,12 @@ export function CustomCursor() {
       setPos({ x: e.clientX, y: e.clientY });
       if (!visible) {
         setVisible(true);
+        document.body.style.cursor = 'none';
       }
     };
     const onLeave = () => {
       setVisible(false);
+      document.body.style.cursor = '';
     };
 
     document.body.addEventListener('mousemove', onMove);
@@ -40,6 +42,7 @@ export function CustomCursor() {
     });
 
     return () => {
+      document.body.style.cursor = '';
       document.body.removeEventListener('mousemove', onMove);
       document.body.removeEventListener('mouseleave', onLeave);
       hoverables.forEach((el) => {
@@ -51,18 +54,17 @@ export function CustomCursor() {
 
   if (!visible) return null;
 
-  // Laggy, fluid spring for the "Aura"
-  const springConfig = { damping: 40, stiffness: 150 };
-
   return (
     <motion.div
-      className="fixed top-0 left-0 w-32 h-32 z-[9999] pointer-events-none rounded-full bg-highlight/10 blur-3xl mix-blend-difference"
-      style={{ x: pos.x - 64, y: pos.y - 64 }}
-      animate={{
-        scale: hovering ? 1.5 : 1,
-        opacity: hovering ? 0.8 : 0.4
-      }}
-      transition={{ type: 'spring', ...springConfig }}
-    />
+      className="fixed top-0 left-0 w-0 h-0 z-[9999] pointer-events-none"
+      aria-hidden
+    >
+      <motion.span
+        className="absolute block w-2 h-2 rounded-full bg-foreground border border-foreground"
+        style={{ left: pos.x, top: pos.y, transform: 'translate(-50%, -50%)' }}
+        animate={{ scale: hovering ? 1.4 : 1 }}
+        transition={{ duration: 0.2 }}
+      />
+    </motion.div>
   );
 }

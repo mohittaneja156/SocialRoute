@@ -76,15 +76,44 @@ export function TestimonialsSection() {
         <h2 ref={titleRef} className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-12">
           What Clients Say
         </h2>
-        <div className="relative min-h-[220px] flex items-center justify-center">
+        <div className="relative min-h-[220px] flex items-center justify-center" style={{ perspective: '1200px' }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
+              initial={{
+                opacity: 0,
+                x: 150,
+                rotateY: 90,
+                rotateX: 15,
+                scale: 0.8,
+                z: -100
+              }}
+              animate={{
+                opacity: 1,
+                x: 0,
+                rotateY: 0,
+                rotateX: 0,
+                scale: 1,
+                z: 0
+              }}
+              exit={{
+                opacity: 0,
+                x: -150,
+                rotateY: -90,
+                rotateX: -15,
+                scale: 0.8,
+                z: -100
+              }}
+              transition={{
+                duration: 0.8,
+                ease: [0.34, 1.56, 0.64, 1],
+                opacity: { duration: 0.5 }
+              }}
               className="absolute inset-0 flex flex-col justify-center"
+              style={{
+                transformStyle: 'preserve-3d',
+                backfaceVisibility: 'hidden'
+              }}
             >
               <blockquote className="text-lg md:text-xl text-muted leading-relaxed italic">
                 &ldquo;{TESTIMONIALS[index].quote}&rdquo;

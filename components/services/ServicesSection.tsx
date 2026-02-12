@@ -81,8 +81,8 @@ function ServiceCard({ service, index, onClick }: { service: ServiceDetail; inde
       className={`group relative p-8 rounded-[1.5rem] border border-white/5 bg-secondary/30 overflow-hidden cursor-none spotlight-glow transition-all hover:bg-secondary/40 hover:border-highlight/30 flex flex-col justify-between h-full min-h-[320px]`}
     >
       <div>
-        <div className="w-12 h-12 rounded-full bg-secondary border border-border-color flex items-center justify-center mb-8 group-hover:scale-110 group-hover:border-highlight/50 transition-all duration-500">
-          <span className="font-display text-xl font-bold text-highlight opacity-60">0{index + 1}</span>
+        <div className="w-12 h-12 rounded-full bg-gradient-premium flex items-center justify-center mb-8 group-hover:scale-110 transition-all duration-500 shadow-lg shadow-blue-500/20">
+          <span className="font-display text-xl font-bold text-white">0{index + 1}</span>
         </div>
         <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4 group-hover:text-highlight transition-colors duration-300">
           {service.title}

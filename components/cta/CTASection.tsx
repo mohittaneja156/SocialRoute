@@ -50,14 +50,14 @@ export function CTASection() {
     <SectionWrapper layer={1} className="py-24 md:py-32 px-6 bg-secondary/20" entranceY={48} entranceScale={0.98}>
       <section ref={sectionRef} className="max-w-3xl mx-auto text-center">
         <div ref={contentRef}>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-            Ready for a Digital Growth Roadmap?
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold">
+            <span className="text-foreground">Ready for a </span><span className="text-animate-gradient">Digital Growth</span><span className="text-foreground"> Roadmap?</span>
           </h2>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
             <MagneticButton strength={0.22}>
               <Link
                 href="#contact"
-                className="inline-block px-8 py-4 bg-foreground text-background font-semibold rounded-sm hover:opacity-90 transition-opacity"
+                className="inline-block px-8 py-4 bg-gradient-premium text-white font-semibold rounded-sm hover:opacity-95 transition-all shadow-lg shadow-blue-500/30"
               >
                 Start Your Roadmap
               </Link>
