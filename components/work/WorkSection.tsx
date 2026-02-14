@@ -15,13 +15,13 @@ export function WorkSection() {
   // Define custom classes for the bento grid items to create visual interest
   const getBentoClasses = (idx: number) => {
     switch (idx) {
-      case 0: return 'md:col-span-8 md:h-[500px] h-[350px]';
-      case 1: return 'md:col-span-4 md:h-[500px] h-[350px]';
-      case 2: return 'md:col-span-5 md:h-[400px] h-[350px]';
-      case 3: return 'md:col-span-7 md:h-[400px] h-[350px]';
-      case 4: return 'md:col-span-6 md:h-[450px] h-[350px]';
-      case 5: return 'md:col-span-6 md:h-[450px] h-[350px]';
-      default: return 'md:col-span-6 md:h-[400px] h-[350px]';
+      case 0: return 'md:col-span-8 md:h-[500px] h-[280px]';
+      case 1: return 'md:col-span-4 md:h-[500px] h-[280px]';
+      case 2: return 'md:col-span-5 md:h-[400px] h-[280px]';
+      case 3: return 'md:col-span-7 md:h-[400px] h-[280px]';
+      case 4: return 'md:col-span-6 md:h-[450px] h-[280px]';
+      case 5: return 'md:col-span-6 md:h-[450px] h-[280px]';
+      default: return 'md:col-span-6 md:h-[400px] h-[280px]';
     }
   };
 
@@ -29,13 +29,13 @@ export function WorkSection() {
     <SectionWrapper
       id="work"
       layer={1}
-      className="relative bg-transparent py-24 md:py-32 px-4 md:px-8 lg:px-12"
+      className="relative bg-transparent py-16 md:py-32 px-4 md:px-8 lg:px-12"
     >
-      <section ref={sectionRef} className="max-w-7xl mx-auto">
+      <section ref={sectionRef} className="max-w-7xl 2xl:max-w-[90rem] mx-auto">
         {/* Section Header - Focused and Professional */}
         <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="max-w-2xl">
-            <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tighter text-foreground mb-6">
+            <h2 className="font-display text-4xl md:text-7xl font-bold tracking-tighter text-foreground mb-6">
               Selected Work<span className="text-highlight">.</span>
             </h2>
             <p className="text-muted text-sm md:text-lg uppercase tracking-[0.2em] font-bold">

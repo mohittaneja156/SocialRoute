@@ -9,23 +9,62 @@ import { motion, AnimatePresence } from 'framer-motion';
  */
 export function FloatingContact() {
     const [isOpen, setIsOpen] = useState(false);
-    const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+    const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+    const [errorMessage, setErrorMessage] = useState('');
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const nameRef = useRef<HTMLInputElement>(null);
+    const emailRef = useRef<HTMLInputElement>(null);
+    const messageRef = useRef<HTMLTextAreaElement>(null);
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setStatus('submitting');
-        // Simulate submission
-        setTimeout(() => {
-            setStatus('success');
-            setTimeout(() => {
-                setIsOpen(false);
-                setStatus('idle');
-            }, 2000);
-        }, 1500);
+        setErrorMessage('');
+
+        const formData = {
+            name: nameRef.current?.value || '',
+            email: emailRef.current?.value || '',
+            phone: '',
+            service: '',
+            message: messageRef.current?.value || '',
+        };
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                setStatus('success');
+                // Reset form
+                if (nameRef.current) nameRef.current.value = '';
+                if (emailRef.current) emailRef.current.value = '';
+                if (messageRef.current) messageRef.current.value = '';
+
+                setTimeout(() => {
+                    setIsOpen(false);
+                    setStatus('idle');
+                }, 2000);
+            } else {
+                setStatus('error');
+                setErrorMessage(result.message || 'Failed to send message');
+                setTimeout(() => setStatus('idle'), 3000);
+            }
+        } catch (error) {
+            setStatus('error');
+            setErrorMessage('Network error. Please try again.');
+            setTimeout(() => setStatus('idle'), 3000);
+        }
     };
 
     return (
-        <div className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[100] flex flex-col items-end gap-4 pointer-events-none">
+        <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[100] flex flex-col items-end gap-3 pointer-events-none">
             {/* Pop-over Form */}
             <AnimatePresence>
                 {isOpen && (
@@ -33,7 +72,10 @@ export function FloatingContact() {
                         initial={{ opacity: 0, scale: 0.9, y: 20, filter: 'blur(10px)' }}
                         animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
                         exit={{ opacity: 0, scale: 0.9, y: 20, filter: 'blur(10px)' }}
-                        className="w-[calc(100vw-3rem)] sm:w-[380px] p-6 rounded-[2rem] border border-border-color bg-secondary/80 backdrop-blur-2xl shadow-2xl pointer-events-auto overflow-hidden relative group"
+                        className="w-[calc(100vw-2rem)] sm:w-[380px] p-5 sm:p-6 rounded-[1.5rem] sm:rounded-[2rem] border-2 border-blue-400/60 dark:border-blue-400/50 bg-gradient-to-br from-white/95 via-blue-50/90 to-purple-50/90 dark:from-slate-700 dark:via-gray-700 dark:to-slate-600 backdrop-blur-3xl shadow-[0_0_40px_rgba(59,130,246,0.3)] dark:shadow-[0_0_60px_rgba(96,165,250,0.4)] pointer-events-auto overflow-hidden relative group"
+                        style={{
+                            backgroundImage: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%)'
+                        }}
                     >
                         <div className="relative z-10">
                             <div className="flex justify-between items-center mb-6">
@@ -65,30 +107,38 @@ export function FloatingContact() {
                                     <div className="space-y-2">
                                         <label className="text-[10px] font-black uppercase tracking-widest text-muted ml-1">Name</label>
                                         <input
+                                            ref={nameRef}
                                             required
                                             type="text"
                                             placeholder="Your Name"
-                                            className="w-full px-4 py-3 rounded-xl border border-border-color bg-secondary/50 focus:outline-none focus:border-highlight/50 transition-colors text-foreground text-sm"
+                                            className="w-full px-4 py-3 rounded-xl border border-border-color bg-white dark:bg-gray-800 focus:outline-none focus:border-highlight/50 transition-colors text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm"
                                         />
                                     </div>
                                     <div className="space-y-2">
                                         <label className="text-[10px] font-black uppercase tracking-widest text-muted ml-1">Email</label>
                                         <input
+                                            ref={emailRef}
                                             required
                                             type="email"
                                             placeholder="hello@world.com"
-                                            className="w-full px-4 py-3 rounded-xl border border-border-color bg-secondary/50 focus:outline-none focus:border-highlight/50 transition-colors text-foreground text-sm"
+                                            className="w-full px-4 py-3 rounded-xl border border-border-color bg-white dark:bg-gray-800 focus:outline-none focus:border-highlight/50 transition-colors text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm"
                                         />
                                     </div>
                                     <div className="space-y-2">
                                         <label className="text-[10px] font-black uppercase tracking-widest text-muted ml-1">How can we help?</label>
                                         <textarea
+                                            ref={messageRef}
                                             required
                                             rows={3}
                                             placeholder="Tell us about your project"
-                                            className="w-full px-4 py-3 rounded-xl border border-border-color bg-secondary/50 focus:outline-none focus:border-highlight/50 transition-colors text-foreground text-sm resize-none"
+                                            className="w-full px-4 py-3 rounded-xl border border-border-color bg-white dark:bg-gray-800 focus:outline-none focus:border-highlight/50 transition-colors text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 text-sm resize-none"
                                         />
                                     </div>
+                                    {status === 'error' && (
+                                        <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-sm text-center">
+                                            {errorMessage}
+                                        </div>
+                                    )}
                                     <button
                                         disabled={status === 'submitting'}
                                         type="submit"
@@ -116,7 +166,7 @@ export function FloatingContact() {
                 }}
                 whileHover={{ scale: 1.1, y: -12 }}
                 whileTap={{ scale: 0.95 }}
-                className="group pointer-events-auto relative w-16 h-16 md:w-20 md:h-20"
+                className="group pointer-events-auto relative w-14 h-14 md:w-20 md:h-20"
                 style={{ perspective: '1000px' }}
             >
                 {/* Main 3D Button */}
@@ -182,6 +232,6 @@ export function FloatingContact() {
                     />
                 )}
             </motion.button>
-        </div>
+        </div >
     );
 }

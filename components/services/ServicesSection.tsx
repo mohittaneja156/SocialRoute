@@ -78,7 +78,7 @@ function ServiceCard({ service, index, onClick }: { service: ServiceDetail; inde
       viewport={{ once: true }}
       whileHover={{ y: -8 }}
       onClick={onClick}
-      className={`group relative p-8 rounded-[1.5rem] border border-white/5 bg-secondary/30 overflow-hidden cursor-none spotlight-glow transition-all hover:bg-secondary/40 hover:border-highlight/30 flex flex-col justify-between h-full min-h-[320px]`}
+      className={`group relative p-6 md:p-8 rounded-[1.5rem] border border-white/5 bg-secondary/30 overflow-hidden cursor-default md:cursor-none spotlight-glow transition-all hover:bg-secondary/40 hover:border-highlight/30 active:scale-95 duration-200 flex flex-col justify-between h-full min-h-[auto] md:min-h-[320px]`}
     >
       <div>
         <div className="w-12 h-12 rounded-full bg-gradient-premium flex items-center justify-center mb-8 group-hover:scale-110 transition-all duration-500 shadow-lg shadow-blue-500/20">
@@ -92,9 +92,9 @@ function ServiceCard({ service, index, onClick }: { service: ServiceDetail; inde
         </p>
       </div>
 
-      <div className="mt-8 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-muted group-hover:text-foreground transition-colors duration-300">
+      <div className="mt-8 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-foreground md:text-muted md:group-hover:text-foreground transition-colors duration-300">
         <span>Learn More</span>
-        <IconArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        <IconArrowRight className="w-4 h-4 translate-x-1 md:translate-x-0 md:group-hover:translate-x-1 transition-transform" />
       </div>
 
       {/* Decorative gradient */}
@@ -110,13 +110,13 @@ export function ServicesSection() {
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null);
 
   return (
-    <SectionWrapper id="services" layer={1} className="py-24 md:py-32 px-6 bg-transparent relative overflow-hidden">
-      <div className="max-w-7xl mx-auto relative z-10">
+    <SectionWrapper id="services" layer={1} className="py-16 md:py-32 px-6 bg-transparent relative overflow-hidden">
+      <div className="max-w-7xl 2xl:max-w-[90rem] mx-auto relative z-10">
         <div className="mb-20">
           <span className="inline-block text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-highlight mb-4">
             Our Expertise
           </span>
-          <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-foreground tracking-tighter">
+          <h2 className="font-display text-4xl md:text-7xl lg:text-8xl font-bold text-foreground tracking-tighter">
             Elevating Brands<span className="text-highlight">.</span>
           </h2>
         </div>

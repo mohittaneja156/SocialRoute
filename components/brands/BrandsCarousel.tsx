@@ -4,14 +4,12 @@ import { motion } from 'framer-motion';
 import { SectionWrapper } from '@/components/ui/SectionWrapper';
 
 const BRANDS = [
-    { id: 1, name: 'Brand One' },
-    { id: 2, name: 'Brand Two' },
-    { id: 3, name: 'Brand Three' },
-    { id: 4, name: 'Brand Four' },
-    { id: 5, name: 'Brand Five' },
-    { id: 6, name: 'Brand Six' },
-    { id: 7, name: 'Brand Seven' },
-    { id: 8, name: 'Brand Eight' },
+    { id: 1, name: 'Brand 1', logo: '/1.png', link: '#' },
+    { id: 2, name: 'Brand 2', logo: '/2.png', link: '#' },
+    { id: 3, name: 'Brand 3', logo: '/3.png', link: '#' },
+    { id: 4, name: 'Brand 4', logo: '/4.jpeg', link: '#' },
+    { id: 5, name: 'Brand 5', logo: '/5.jpeg', link: '#' },
+    { id: 6, name: 'Brand 6', logo: '/6.png', link: '#' },
 ];
 
 /**
@@ -53,7 +51,7 @@ export function BrandsCarousel() {
                     <motion.div
                         className="flex gap-8 md:gap-12 py-6"
                         animate={{
-                            x: [0, -1 * (BRANDS.length * 172)], // 160px width + 12px gap
+                            x: ["0%", "-33.333%"],
                         }}
                         transition={{
                             x: {
@@ -65,14 +63,22 @@ export function BrandsCarousel() {
                         }}
                     >
                         {duplicated.map((brand, index) => (
-                            <div
+                            <a
                                 key={`${brand.id}-${index}`}
-                                className="flex-shrink-0 flex items-center justify-center w-[140px] md:w-[160px] h-[72px] md:h-[80px] rounded-lg border border-border-color bg-secondary/60 px-4"
+                                href={brand.link || '#'}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex-shrink-0 flex items-center justify-center w-[140px] md:w-[160px] h-[72px] md:h-[80px] rounded-lg border border-border-color bg-secondary/60 overflow-hidden hover:bg-secondary/80 transition-all hover:scale-105 cursor-pointer"
                             >
-                                <span className="font-display font-semibold text-foreground/80 text-sm md:text-base text-center truncate max-w-full">
-                                    {brand.name}
-                                </span>
-                            </div>
+                                {brand.logo && (
+                                    // eslint-disable-next-line @next/next/no-img-element
+                                    <img
+                                        src={brand.logo}
+                                        alt={brand.name}
+                                        className="w-full h-full object-contain p-2"
+                                    />
+                                )}
+                            </a>
                         ))}
                     </motion.div>
                 </div>

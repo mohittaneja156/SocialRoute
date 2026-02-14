@@ -6,7 +6,6 @@ import { AboutSection } from '@/components/about/AboutSection';
 import { ServicesSection } from '@/components/services/ServicesSection';
 import { WorkSection } from '@/components/work/WorkSection';
 import { Process2DSection } from '@/components/process/Process2DSection';
-import { ClientsSection } from '@/components/clients/ClientsSection';
 import { BrandsCarousel } from '@/components/brands/BrandsCarousel';
 import { WhyChooseUs } from '@/components/why/WhyChooseUs';
 import { TestimonialsSection } from '@/components/testimonials/TestimonialsSection';
@@ -37,7 +36,6 @@ export default function Home() {
         <ServicesSection />
         <WorkSection />
         <Process2DSection />
-        <ClientsSection />
         <BrandsCarousel />
         <WhyChooseUs />
         <TestimonialsSection />

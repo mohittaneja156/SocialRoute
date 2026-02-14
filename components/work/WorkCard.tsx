@@ -21,7 +21,7 @@ export function WorkCard({ project, index, className = '' }: WorkCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.21, 1.11, 0.81, 0.99], delay: index * 0.1 }}
       viewport={{ once: true, margin: "-100px" }}
-      className={`group relative overflow-hidden rounded-3xl border border-border-color bg-secondary shadow-xl cursor-none pointer-events-auto ${className}`}
+      className={`group relative overflow-hidden rounded-3xl border border-border-color bg-secondary shadow-xl cursor-default md:cursor-none pointer-events-auto active:scale-95 transition-transform duration-200 ${className}`}
     >
       {/* Imagery with subtle zoom */}
       <div className="absolute inset-0 w-full h-full">
@@ -30,7 +30,7 @@ export function WorkCard({ project, index, className = '' }: WorkCardProps) {
           alt={project.imageAlt}
           className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 md:opacity-60 md:group-hover:opacity-40 transition-opacity duration-500" />
       </div>
 
       {/* Content Container */}
@@ -47,8 +47,8 @@ export function WorkCard({ project, index, className = '' }: WorkCardProps) {
           <div className="mt-4 flex items-center gap-3 overflow-hidden">
             <motion.div
               className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-foreground/80"
-              initial={{ x: -20, opacity: 0 }}
-              whileHover={{ x: 0, opacity: 1 }}
+              initial={{ x: 0, opacity: 1 }}
+              whileHover={{ x: 5 }}
             >
               <span>Explore</span>
               <IconArrowRight className="w-4 h-4" />

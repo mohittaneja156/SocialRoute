@@ -47,7 +47,7 @@ export function CTASection() {
   }, []);
 
   return (
-    <SectionWrapper layer={1} className="py-24 md:py-32 px-6 bg-secondary/20" entranceY={48} entranceScale={0.98}>
+    <SectionWrapper layer={1} className="py-16 md:py-32 px-6 bg-secondary/20" entranceY={48} entranceScale={0.98}>
       <section ref={sectionRef} className="max-w-3xl mx-auto text-center">
         <div ref={contentRef}>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold">

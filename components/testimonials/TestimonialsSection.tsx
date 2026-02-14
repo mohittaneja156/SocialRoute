@@ -71,9 +71,9 @@ export function TestimonialsSection() {
   }, []);
 
   return (
-    <SectionWrapper id="testimonials" layer={0} className="py-24 md:py-32 px-6 overflow-hidden" entranceY={48} entranceScale={0.98}>
+    <SectionWrapper id="testimonials" layer={0} className="py-16 md:py-32 px-6 overflow-hidden" entranceY={48} entranceScale={0.98}>
       <section ref={sectionRef} className="max-w-3xl mx-auto text-center">
-        <h2 ref={titleRef} className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-12">
+        <h2 ref={titleRef} className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-8 md:mb-12">
           What Clients Say
         </h2>
         <div className="relative min-h-[220px] flex items-center justify-center" style={{ perspective: '1200px' }}>

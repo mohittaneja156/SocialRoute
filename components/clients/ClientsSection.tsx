@@ -72,9 +72,12 @@ export function ClientsSection() {
             style={{ scrollSnapType: 'x mandatory' } as React.CSSProperties}
           >
             {duplicated.map((client) => (
-              <div
+              <a
                 key={`${client.id}-${client.name}`}
-                className="flex-shrink-0 flex items-center justify-center w-[140px] md:w-[160px] h-[72px] md:h-[80px] rounded-lg border border-border-color bg-secondary/60 px-4 snap-center"
+                href={client.link || '#'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-shrink-0 flex items-center justify-center w-[140px] md:w-[160px] h-[72px] md:h-[80px] rounded-lg border border-border-color bg-secondary/60 px-4 snap-center hover:bg-secondary/80 transition-all hover:scale-105 cursor-pointer"
               >
                 {client.logo ? (
                   // eslint-disable-next-line @next/next/no-img-element
@@ -88,7 +91,7 @@ export function ClientsSection() {
                     {client.name}
                   </span>
                 )}
-              </div>
+              </a>
             ))}
           </div>
         </div>

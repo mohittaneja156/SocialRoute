@@ -96,7 +96,7 @@ export function HeroSection() {
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-primary/10 to-secondary/40 pointer-events-none dark:from-primary/30 dark:to-secondary/80" aria-hidden />
       {isMobile && <div className="absolute inset-0 z-0 bg-gradient-to-b from-primary/20 to-secondary/40 dark:from-primary/50 dark:to-secondary/80" aria-hidden />}
 
-      <div className="relative z-10 max-w-5xl mx-auto text-center">
+      <div className="relative z-10 max-w-5xl 2xl:max-w-7xl mx-auto text-center">
         {/* Floating Engage Badge */}
         <div
           ref={badgeRef}
@@ -119,7 +119,7 @@ export function HeroSection() {
 
         <h1
           ref={headlineWrapRef}
-          className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-foreground leading-[0.9]"
+          className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl 2xl:text-9xl font-bold tracking-tighter text-foreground leading-[0.9]"
         >
           {HEADLINE_WORDS.map((word, i) => (
             <span

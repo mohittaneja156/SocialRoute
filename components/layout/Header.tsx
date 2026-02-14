@@ -115,10 +115,14 @@ export function Header() {
           type="button"
           aria-expanded={open}
           aria-label="Toggle menu"
-          className="md:hidden p-2 text-foreground"
+          className="md:hidden p-2 text-foreground focus:outline-none"
           onClick={() => setOpen(!open)}
         >
-          {open ? '✕' : '☰'}
+          {open ? (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          )}
         </button>
 
         <div className="md:hidden ml-2">{TogglePill}</div>
@@ -130,15 +134,15 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-secondary border-t border-secondary py-4"
+            className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-t border-border-color/50 py-6 px-6 shadow-2xl h-screen"
             aria-label="Mobile navigation"
           >
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-6 text-center">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="transition-colors text-muted hover:text-foreground"
+                  className="text-lg font-medium text-muted hover:text-foreground transition-colors py-2"
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
@@ -148,6 +152,6 @@ export function Header() {
           </motion.nav>
         )}
       </AnimatePresence>
-    </header>
+    </header >
   );
 }

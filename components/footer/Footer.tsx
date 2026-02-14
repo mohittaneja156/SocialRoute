@@ -33,7 +33,7 @@ export function Footer() {
 
   return (
     <footer className="pt-16 pb-8 px-6 border-t border-border-color bg-secondary/20">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl 2xl:max-w-[85rem] mx-auto">
         {/* Map / Address Removed */}
 
         {/* Copyright + Legal */}
