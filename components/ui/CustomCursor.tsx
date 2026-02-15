@@ -14,9 +14,7 @@ export function CustomCursor() {
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const isTouch = 'ontouchstart' in window;
-    if (isTouch) return;
+    if (window.innerWidth < 768) return; // Disable on small screens
 
     const onMove = (e: MouseEvent) => {
       setPos({ x: e.clientX, y: e.clientY });
@@ -56,7 +54,7 @@ export function CustomCursor() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-0 h-0 z-[9999] pointer-events-none"
+      className="fixed top-0 left-0 w-0 h-0 z-[9999] pointer-events-none hidden md:block"
       aria-hidden
     >
       <motion.span

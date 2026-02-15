@@ -8,10 +8,10 @@ const NAV_LINKS = [
   { href: '#about', label: 'About' },
   { href: '#services', label: 'Services' },
   { href: '#work', label: 'Our Work' },
-  { href: '#process', label: 'Process' },
+  // { href: '#process', label: 'Process' },
   { href: '#clients', label: 'Clients' },
   { href: '#why-us', label: 'Why Us' },
-  { href: '#testimonials', label: 'Testimonials' },
+  // { href: '#testimonials', label: 'Testimonials' },
   { href: '#contact', label: 'Contact' },
 ];
 

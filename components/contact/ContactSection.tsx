@@ -312,23 +312,7 @@ export function ContactSection() {
           <div className="flex flex-col gap-6">
             {/* Map */}
             <div className="relative h-[280px] lg:h-[320px] rounded-3xl overflow-hidden border-2 border-border-color bg-secondary/30 group">
-              <MapWithNoSSR coords={[22.5937, 78.9629]} zoom={4} />
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-background/90 via-background/20 to-transparent z-[400] group-hover:from-background/70 transition-all" />
-
-              {/* Address Overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 z-[500]">
-                <h3 className="text-xl font-bold text-foreground mb-2 flex items-center gap-2">
-                  <svg className="w-5 h-5 text-highlight" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  Social Route HQ
-                </h3>
-                <p className="text-muted leading-relaxed">
-                  Sector 4, Vaishali, Ghaziabad<br />
-                  Uttar Pradesh 201010, India
-                </p>
-              </div>
+              <MapWithNoSSR coords={[28.6441857, 77.1103125]} zoom={12} />
             </div>
 
             {/* Social Links */}

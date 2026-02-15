@@ -71,7 +71,7 @@ function LocationPin() {
 
   return (
     <Float speed={1.5} floatIntensity={0.3} rotationIntensity={0.1}>
-      <group ref={groupRef} position={[0.1, 0.15, 0.2]}>
+      <group ref={groupRef} position={[-0.5, 0.05, 0.2]}>
         <mesh position={[0, 0.12, 0]}>
           <cylinderGeometry args={[0.04, 0.06, 0.08, 8]} />
           <meshStandardMaterial color="#fafafa" metalness={0.3} roughness={0.5} />
