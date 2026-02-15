@@ -11,7 +11,7 @@ if (typeof window !== 'undefined') {
 }
 
 const METRICS = [
-  { value: 70, suffix: '+', label: 'Projects Delivered' },
+  { value: 500, suffix: '+', label: 'Projects Delivered' },
   { value: 50, suffix: '+', label: 'Brands Partnered' },
   { value: 5, suffix: '+', label: 'Years of Growth' },
   { value: 100, suffix: '%', label: 'Dedicated Focus' },

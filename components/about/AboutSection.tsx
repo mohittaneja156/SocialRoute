@@ -10,6 +10,7 @@ const PHILOSOPHY = [
   'Strategy before execution',
   'Creativity with purpose',
   'Growth that can be measured',
+  "Authenticity above all",
 ];
 
 if (typeof window !== 'undefined') {
@@ -64,10 +65,10 @@ export function AboutSection() {
             opacity: 1,
             scale: 1,
             y: 0,
-            duration: 0.8,
-            stagger: 0.15,
+            duration: 0.6,
+            stagger: 0.1,
             ease: 'back.out(1.7)',
-            scrollTrigger: { trigger: listRef.current, start: 'top 90%', end: 'top 60%', scrub: 1.2 },
+            scrollTrigger: { trigger: listRef.current, start: 'top 90%', end: 'top 60%', scrub: 0.5 },
           }
         );
       }
